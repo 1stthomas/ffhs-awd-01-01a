@@ -5,6 +5,8 @@ Created on Fri Feb  9 19:03:59 2018
 @author: zoom4u
 """
 
+index = 0
+
 
 def fib(n):
     """
@@ -25,12 +27,31 @@ def fib(n):
     >>> fib(10)
     55
     """
-    if n == 0:
-        return 0
-    elif n == 1:
-        return 1
+    global index
+    index = index + 1
+    
+    if n == 0 or n == 1:
+        return n
+    else:
+        return fib(n - 1) + fib(n - 2)
+
+
+def fibCallsCount(n):
+    print(fibCallsCount.count)
+    fibCallsCount.count = fibCallsCount.count + 1
+    if n == 0 or n == 1:
+        return n
     else:
         return fib(n - 1) + fib(n - 2)
 
 
 print(fib(10))
+print("---------------------------")
+print("index: " + str(index))
+print("---------------------------")
+
+fibCallsCount.count = 0
+
+print(fibCallsCount(10))
+print("---------------------------")
+print("count: " + str(fibCallsCount.count))
